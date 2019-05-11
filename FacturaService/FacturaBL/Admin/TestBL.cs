@@ -8,7 +8,7 @@ namespace FacturaBL.Admin
 {
     public class TestBL
     {
-        DatabaseFacturasEntities db = new DatabaseFacturasEntities();
+        ModelEntities db = new ModelEntities();
         public JResult jresult = new JResult();
 
         #region Funciones CRUD

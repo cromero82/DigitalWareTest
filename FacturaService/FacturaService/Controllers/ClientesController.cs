@@ -16,14 +16,11 @@ namespace FacturaService.Controllers
         public IHttpActionResult Get()
         {
             IHttpActionResult ret = null;
-            //return new string[] { "value1", "value2" };
             var jresult = BL.GetListActivos();
             if (jresult.Success)
-                return Ok(jresult.Data);
-                //return Json(jresult);
+                return Ok(jresult);
             else
                 return Json(jresult);
-            //return StatusCode(HttpStatusCode.InternalServerError);
         }
 
         // GET: api/Clientes/5

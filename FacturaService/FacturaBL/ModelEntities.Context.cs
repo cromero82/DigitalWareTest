@@ -13,17 +13,17 @@ namespace FacturaBL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DatabaseFacturasEntities : DbContext
+    public partial class ModelEntities : DbContext
     {
-        public DatabaseFacturasEntities()
-            : base("name=DatabaseFacturasEntities")
+        public ModelEntities()
+            : base("name=ModelEntities")
         {
         }
     
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    throw new UnintentionalCodeFirstException();
-        //}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
+        }
     
         public virtual DbSet<DOM_TEST> DOM_TEST { get; set; }
     }

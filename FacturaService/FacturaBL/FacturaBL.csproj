@@ -151,13 +151,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DatabaseFacturas.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DatabaseFacturas_log.ldf">
-      <DependentUpon>DatabaseFacturas.mdf</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="ModelEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelEntities.edmx</DependentUpon>
@@ -167,6 +160,13 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelEntities.edmx</DependentUpon>
       <LastGenOutput>ModelEntities.cs</LastGenOutput>
+    </Content>
+    <None Include="DatabaseFacturas.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="DatabaseFacturas_log.ldf">
+      <DependentUpon>DatabaseFacturas.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

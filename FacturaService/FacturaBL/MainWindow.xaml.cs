@@ -12,7 +12,7 @@ namespace FacturaBL
     public partial class MainWindow : Window
     {
         TestBL BL = new TestBL();
-        private DatabaseFacturasEntities db = new DatabaseFacturasEntities();
+        private ModelEntities db = new ModelEntities();
         public MainWindow()
         {
             InitializeComponent();
@@ -20,7 +20,7 @@ namespace FacturaBL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //var jresult = BL.GetListActivos();
+            var jresult = BL.GetListActivos();
 
             //db.DOM_TEST
             DOM_TEST dbItem = new DOM_TEST();
