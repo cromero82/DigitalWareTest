@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FacturaBL.Models
+namespace Modelos.Models
 {
-    class TestViewModel
+    public class TestViewModel
     {
         public int id { get; set; }
         public string nombre { get; set; }

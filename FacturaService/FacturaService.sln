@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacturaService", "FacturaService\FacturaService.csproj", "{8F0BB379-A767-4C5B-85B5-43E57E975464}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacturaBL", "FacturaBL\FacturaBL.csproj", "{B4460A0E-BDA4-4A0B-A725-EC7B88816C45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelos", "Modelos\Modelos.csproj", "{16E41AE6-AEAE-4F28-AA10-2CBAE677AC04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B4460A0E-BDA4-4A0B-A725-EC7B88816C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4460A0E-BDA4-4A0B-A725-EC7B88816C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4460A0E-BDA4-4A0B-A725-EC7B88816C45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16E41AE6-AEAE-4F28-AA10-2CBAE677AC04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16E41AE6-AEAE-4F28-AA10-2CBAE677AC04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16E41AE6-AEAE-4F28-AA10-2CBAE677AC04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16E41AE6-AEAE-4F28-AA10-2CBAE677AC04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

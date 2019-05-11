@@ -161,6 +161,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -251,6 +252,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FacturaBL\FacturaBL.csproj">
+      <Project>{b4460a0e-bda4-4a0b-a725-ec7b88816c45}</Project>
+      <Name>FacturaBL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modelos\Modelos.csproj">
+      <Project>{16E41AE6-AEAE-4F28-AA10-2CBAE677AC04}</Project>
+      <Name>Modelos</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

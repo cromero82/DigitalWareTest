@@ -1,19 +1,8 @@
-﻿using FacturaBL.Models;
-using System;
-using System.Collections.Generic;
+﻿using FacturaBL.Admin;
+using Modelos.Models;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FacturaBL
 {
@@ -22,6 +11,7 @@ namespace FacturaBL
     /// </summary>
     public partial class MainWindow : Window
     {
+        TestBL BL = new TestBL();
         private DatabaseFacturasEntities db = new DatabaseFacturasEntities();
         public MainWindow()
         {
@@ -30,6 +20,8 @@ namespace FacturaBL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //var jresult = BL.GetListActivos();
+
             //db.DOM_TEST
             DOM_TEST dbItem = new DOM_TEST();
             dbItem.nombre = txtNombreTest.Text;
