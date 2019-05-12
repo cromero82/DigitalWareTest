@@ -87,6 +87,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Admin\ClienteBL.cs" />
+    <Compile Include="Admin\FacturaDetalleBL.cs" />
+    <Compile Include="Admin\FacturaGoBL.cs" />
     <Compile Include="Admin\ProductoBL.cs" />
     <Compile Include="Admin\TestBL.cs" />
     <Compile Include="App.xaml.cs">

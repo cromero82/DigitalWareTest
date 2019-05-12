@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="Models\AspGeneralViewModel.cs" />
     <Compile Include="Models\ClienteViewModel.cs" />
+    <Compile Include="Models\FacturaDetalleViewModel.cs" />
+    <Compile Include="Models\FacturaViewModel.cs" />
     <Compile Include="Models\ProductoViewModel.cs" />
     <Compile Include="Models\TestViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

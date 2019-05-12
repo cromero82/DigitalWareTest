@@ -21,7 +21,6 @@ namespace FacturaBL
         }
     
         public int Id { get; set; }
-        public int ProductoId { get; set; }
         public int ClienteId { get; set; }
         public System.DateTime Fecha { get; set; }
         public int Total { get; set; }

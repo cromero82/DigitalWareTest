@@ -27,8 +27,8 @@ namespace FacturaBL
     
         public virtual DbSet<DOM_TEST> DOM_TEST { get; set; }
         public virtual DbSet<FACT_CLIENTE> FACT_CLIENTE { get; set; }
+        public virtual DbSet<FACT_PRODUCTO> FACT_PRODUCTO { get; set; }
         public virtual DbSet<FACT_FACTURA> FACT_FACTURA { get; set; }
         public virtual DbSet<FACT_FACTURA_DETALLE> FACT_FACTURA_DETALLE { get; set; }
-        public virtual DbSet<FACT_PRODUCTO> FACT_PRODUCTO { get; set; }
     }
 }

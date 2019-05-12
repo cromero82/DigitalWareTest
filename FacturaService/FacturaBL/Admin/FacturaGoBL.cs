@@ -1,5 +1,4 @@
-using Modelos.Model;
-using Modelos.Models;
+﻿using Modelos.Models;
 using Modelos.Utils;
 using System;
 using System.Data.Entity;
@@ -7,23 +6,24 @@ using System.Linq;
 
 namespace FacturaBL.Admin
 {
-    public class ProductoBL
+    public class FacturaGoBL
     {
         ModelEntities db = new ModelEntities();
         public JResult jresult = new JResult();
 
-        public JResult GetProducto(int id)
+        public JResult GetFactura(int id)
         {
             try
             {
                 var queryable = getQueriableBase();
                 var dbItem = queryable.Where(w => w.Id == id).FirstOrDefault();
-                jresult.Data = new ProductoViewModel
+                jresult.Data = new FacturaViewModel
                 {
                     Id = dbItem.Id,
-                    Codigo = dbItem.Codigo,
-                    Nombre = dbItem.Nombre,
-                    Valor = dbItem.Valor,
+                    ClienteId = dbItem.ClienteId,
+                    //Cliente = dbItem.FACT_CLIENTE.Documento,
+                    Fecha = dbItem.Fecha,//utilidades.ObtenerStringDesdeFecha(dbItem.Fecha),
+                    Total = dbItem.Total,
                     Estregistro = dbItem.Estregistro,
                 };
 
@@ -38,21 +38,22 @@ namespace FacturaBL.Admin
             }
             #endregion
         }
+        
 
-        public JResult InsProducto(ProductoViewModel model)
+        public JResult InsFactura(FacturaViewModel model)
         {
             try
             {
-                FACT_PRODUCTO dbItem = new FACT_PRODUCTO
+                FACT_FACTURA dbItem = new FACT_FACTURA
                 {
                     Id = model.Id,
-                    Codigo = model.Codigo.ToUpper(),
-                    Nombre = model.Nombre.ToUpper(),
-                    Valor = model.Valor,
-                    Estregistro = 1
+                    ClienteId = model.ClienteId,
+                    Fecha = model.Fecha, //utilidades.ObtenerFechaDesdeString(model.Fecha),
+                    Total = model.Total,
+                    Estregistro = 1,
                 };
 
-                db.FACT_PRODUCTO.Attach(dbItem);
+                db.FACT_FACTURA.Attach(dbItem);
                 db.Entry(dbItem).State = EntityState.Added;
                 db.SaveChanges();
                 model.Id = dbItem.Id;
@@ -71,18 +72,18 @@ namespace FacturaBL.Admin
             #endregion
         }
 
-        public JResult UpdProducto(ProductoViewModel model)
+        public JResult UpdFactura(FacturaViewModel model)
         {
             try
             {
-                var dbItem = db.FACT_PRODUCTO.Find(model.Id);
+                var dbItem = db.FACT_FACTURA.Find(model.Id);
                 dbItem.Id = model.Id;
-                dbItem.Codigo = model.Codigo.ToUpper();
-                dbItem.Nombre = model.Nombre.ToUpper();
-                dbItem.Valor = model.Valor;
+                dbItem.ClienteId = model.ClienteId;
+                dbItem.Fecha = model.Fecha;
+                dbItem.Total = model.Total;
                 dbItem.Estregistro = model.Estregistro;
 
-                db.FACT_PRODUCTO.Attach(dbItem);
+                db.FACT_FACTURA.Attach(dbItem);
                 db.Entry(dbItem).State = EntityState.Modified;
                 db.SaveChanges();
 
@@ -98,13 +99,37 @@ namespace FacturaBL.Admin
             #endregion
         }
 
-        public JResult DelProducto(int id)
+        public JResult UpdTotalFactura(int facturaId, int totalFactua)
         {
             try
             {
-                var dbItem = db.FACT_PRODUCTO.Find(id);
+                var dbItem = db.FACT_FACTURA.Find(facturaId);
+                dbItem.Total =totalFactua;
+
+                db.FACT_FACTURA.Attach(dbItem);
+                db.Entry(dbItem).State = EntityState.Modified;
+                db.SaveChanges();
+
+                #region Salida Generica OK
+                return jresult.SetOk();
+                #endregion
+            }
+            #region Salida generica para errores
+            catch (Exception ex)
+            {
+                return jresult.SetError(ex, "Error registrando datos", this.GetType().Name);
+            }
+            #endregion
+        }
+
+
+        public JResult DelFactura(int id)
+        {
+            try
+            {
+                var dbItem = db.FACT_FACTURA.Find(id);
                 dbItem.Estregistro = 4;
-                db.FACT_PRODUCTO.Attach(dbItem);
+                db.FACT_FACTURA.Attach(dbItem);
                 db.Entry(dbItem).State = EntityState.Modified;
                 db.SaveChanges();
 
@@ -122,31 +147,31 @@ namespace FacturaBL.Admin
 
         public JResult GetListActivos()
         {
-            var lista = db.FACT_PRODUCTO.Where(w => w.Estregistro == 1).Select(dbItem => new GeneralViewModel
+            var lista = db.FACT_FACTURA.Where(w => w.Estregistro == 1).Select(dbItem => new GeneralViewModel
             {
                 Id = dbItem.Id,
                 Estregistro = dbItem.Estregistro,
-                Nombre = dbItem.Nombre,
+                Nombre = dbItem.ClienteId + "",
             }).ToList<GeneralViewModel>();
             return jresult.SetOk(lista, "Datos consultados correctamente");
         }
 
-        public IQueryable<FACT_PRODUCTO> getQueriableBase()
+        public IQueryable<FACT_FACTURA> getQueriableBase()
         {
-            return db.FACT_PRODUCTO.AsQueryable();
+            return db.FACT_FACTURA.Include(i => i.FACT_CLIENTE);
         }
 
-        public IQueryable<FACT_PRODUCTO> getQueriableBaseActive()
+        public IQueryable<FACT_FACTURA> getQueriableBaseActive()
         {
-            return this.getQueriableBase().Where(w => w.Estregistro <= 2).AsQueryable();
+            return this.getQueriableBase().Where(w => w.Estregistro <= 2);
         }
 
         #region Validaciones
 
-        public bool ValidacionUnique(ProductoViewModel model)
+        public bool ValidacionUnique(FacturaViewModel model)
         {
-            var query = getQueriableBaseActive().Where(w => w.Nombre == model.Nombre && w.Estregistro == 1);
-            if (model.Id != null)
+            //var query = getQueriableBaseActive().Where(w => w.ClienteId == model.ClienteId && w.f && w.Estregistro == 1 );
+            /*if (model.Id != null)
             {
                 query = query.Where(w => w.Id != model.Id);
             }
@@ -155,11 +180,10 @@ namespace FacturaBL.Admin
             {
                 jresult.Errores.addError("General", "Ya existe un registro con datos similares");
                 return false;
-            }
+            }*/
             return true;
         }
 
         #endregion
     }
 }
-
