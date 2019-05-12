@@ -86,12 +86,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Admin\ClienteBL.cs" />
+    <Compile Include="Admin\ProductoBL.cs" />
     <Compile Include="Admin\TestBL.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DOM_TEST.cs">
+      <DependentUpon>ModelEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FACT_CLIENTE.cs">
+      <DependentUpon>ModelEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FACT_FACTURA.cs">
+      <DependentUpon>ModelEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FACT_FACTURA_DETALLE.cs">
+      <DependentUpon>ModelEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FACT_PRODUCTO.cs">
       <DependentUpon>ModelEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">

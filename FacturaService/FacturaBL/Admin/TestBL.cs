@@ -111,12 +111,12 @@ namespace FacturaBL.Admin
             //var listaTipos = db.DOM_TEST.Where(w => w.Estregistro == 1).ToList();
 
             var lista = getQueriableBase().Select(dbItem =>
-            new AspGeneralViewModel
+            new GeneralViewModel
             {
                 Id = dbItem.id,
                 Nombre = dbItem.nombre
             }
-            ).ToList<AspGeneralViewModel>();
+            ).ToList<GeneralViewModel>();
 
             return jresult.SetOk(lista, "Datos consultados correctamente");
         }

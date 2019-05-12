@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelos.Models
 {
-    public class AspGeneralViewModel
+    public class GeneralViewModel
     {
         public int Id { get; set; }
 
