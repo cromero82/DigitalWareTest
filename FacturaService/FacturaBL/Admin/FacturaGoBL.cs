@@ -147,12 +147,15 @@ namespace FacturaBL.Admin
 
         public JResult GetListActivos()
         {
-            var lista = db.FACT_FACTURA.Where(w => w.Estregistro == 1).Select(dbItem => new GeneralViewModel
+            var lista = db.FACT_FACTURA.Where(w => w.Estregistro == 1).Select(dbItem => new FacturaViewModel
             {
                 Id = dbItem.Id,
+                ClienteId = dbItem.ClienteId,
+                //Cliente = dbItem.FACT_CLIENTE.Documento,
+                Fecha = dbItem.Fecha,//utilidades.ObtenerStringDesdeFecha(dbItem.Fecha),
+                Total = dbItem.Total,
                 Estregistro = dbItem.Estregistro,
-                Nombre = dbItem.ClienteId + "",
-            }).ToList<GeneralViewModel>();
+            }).ToList<FacturaViewModel>();
             return jresult.SetOk(lista, "Datos consultados correctamente");
         }
 

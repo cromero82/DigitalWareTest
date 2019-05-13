@@ -23,8 +23,8 @@ namespace FacturaBL.Admin
 	  			Id = dbItem.Id,
 	  			FacturaId = dbItem.FacturaId,
 	  			//Factura = dbItem.FACT_FACTURA.,
-	  			ProductoId = dbItem.ProductoId,
-	  			Producto = dbItem.FACT_PRODUCTO.Nombre,
+	  			InventarioId = dbItem.InventarioId,
+	  			Producto = dbItem.FACT_INVENTARIO.FACT_PRODUCTO.Nombre,
 	  			Cant = dbItem.Cant,
 	  			Subtotal = dbItem.Subtotal,
 	  			Estregistro = dbItem.Estregistro,
@@ -47,13 +47,13 @@ namespace FacturaBL.Admin
 	  	try
 	  	{
             ProductoBL productoBL = new ProductoBL();
-            var producto = productoBL.GetProducto(model.ProductoId);
+            var producto = productoBL.GetProducto(model.InventarioId);
 
 	  		FACT_FACTURA_DETALLE dbItem = new FACT_FACTURA_DETALLE
 	  		{
 	  			Id = model.Id,
 	  			FacturaId = model.FacturaId,
-	  			ProductoId = model.ProductoId,
+	  			InventarioId = model.InventarioId,
 	  			Cant = model.Cant,
 	  			Subtotal = producto.Data.Valor * model.Cant,
 	  			Estregistro = 1,
@@ -90,12 +90,12 @@ namespace FacturaBL.Admin
 	  	try
 	  	{
             ProductoBL productoBL = new ProductoBL();
-            var producto = productoBL.GetProducto(model.ProductoId);
+            var producto = productoBL.GetProducto(model.InventarioId);
 
             var dbItem = db.FACT_FACTURA_DETALLE.Find(model.Id);
 	  		dbItem.Id = model.Id;
 	  		dbItem.FacturaId = model.FacturaId;
-	  		dbItem.ProductoId = model.ProductoId;
+	  		dbItem.InventarioId = model.InventarioId;
 	  		dbItem.Cant = model.Cant;
             dbItem.Subtotal = producto.Data.Valor * model.Cant;
 	  		dbItem.Estregistro = model.Estregistro;
@@ -161,18 +161,23 @@ namespace FacturaBL.Admin
 
 	  public JResult GetListActivos()
 	  {
-	  	var lista = db.FACT_FACTURA_DETALLE.Where(w => w.Estregistro == 1).Select(dbItem => new GeneralViewModel
-	  	{
-	  		Id = dbItem.Id,
-	  		Estregistro = dbItem.Estregistro,
-	  		Nombre = dbItem.Subtotal.ToString(),
-	  	}).ToList<GeneralViewModel>();
+	  	var lista = db.FACT_FACTURA_DETALLE.Where(w => w.Estregistro == 1).Select(dbItem => new FacturaDetalleViewModel
+          {
+              Id = dbItem.Id,
+              FacturaId = dbItem.FacturaId,
+              //Factura = dbItem.FACT_FACTURA.,
+              InventarioId = dbItem.InventarioId,
+              Producto = dbItem.FACT_INVENTARIO.FACT_PRODUCTO.Nombre,
+              Cant = dbItem.Cant,
+              Subtotal = dbItem.Subtotal,
+              Estregistro = dbItem.Estregistro
+          }).ToList<FacturaDetalleViewModel>();
 	  	return jresult.SetOk(lista, "Datos consultados correctamente");
 	  }
 
 	  public IQueryable<FACT_FACTURA_DETALLE> getQueriableBase()
 	  {
-	  	return db.FACT_FACTURA_DETALLE.Include( i => i.FACT_FACTURA).Include( i => i.FACT_PRODUCTO).AsQueryable();
+	  	return db.FACT_FACTURA_DETALLE.Include( i => i.FACT_FACTURA).Include( i => i.FACT_INVENTARIO.FACT_PRODUCTO).AsQueryable();
 	  }
 
 	  public IQueryable<FACT_FACTURA_DETALLE> getQueriableBaseActive()
@@ -184,7 +189,7 @@ namespace FacturaBL.Admin
 
 	  public bool ValidacionUnique(FacturaDetalleViewModel model )
 	  {
-	  	var query = getQueriableBaseActive().Where(w => w.FacturaId == model.FacturaId && w.ProductoId == model.ProductoId && w.Estregistro == 1 );
+	  	var query = getQueriableBaseActive().Where(w => w.FacturaId == model.FacturaId && w.InventarioId == model.InventarioId && w.Estregistro == 1 );
 	  	if (model.Id != null)
 	  	{
 	  		query = query.Where(w => w.Id != model.Id);

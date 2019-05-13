@@ -8,7 +8,7 @@ namespace SISCOL.Model
     public int FacturaId { get; set; }
     public string Factura { get; set; }
 
-    public int ProductoId { get; set; }
+    public int InventarioId { get; set; }
     public string Producto { get; set; }
 
     public int Cant { get; set; }

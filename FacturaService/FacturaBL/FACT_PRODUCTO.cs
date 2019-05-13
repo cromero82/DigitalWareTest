@@ -17,7 +17,7 @@ namespace FacturaBL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FACT_PRODUCTO()
         {
-            this.FACT_FACTURA_DETALLE = new HashSet<FACT_FACTURA_DETALLE>();
+            this.FACT_INVENTARIO = new HashSet<FACT_INVENTARIO>();
         }
     
         public int Id { get; set; }
@@ -27,6 +27,6 @@ namespace FacturaBL
         public int Estregistro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FACT_FACTURA_DETALLE> FACT_FACTURA_DETALLE { get; set; }
+        public virtual ICollection<FACT_INVENTARIO> FACT_INVENTARIO { get; set; }
     }
 }

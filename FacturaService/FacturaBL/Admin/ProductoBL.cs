@@ -122,12 +122,14 @@ namespace FacturaBL.Admin
 
         public JResult GetListActivos()
         {
-            var lista = db.FACT_PRODUCTO.Where(w => w.Estregistro == 1).Select(dbItem => new GeneralViewModel
+            var lista = db.FACT_PRODUCTO.Where(w => w.Estregistro == 1).Select(dbItem => new ProductoViewModel
             {
                 Id = dbItem.Id,
-                Estregistro = dbItem.Estregistro,
+                Codigo = dbItem.Codigo,
                 Nombre = dbItem.Nombre,
-            }).ToList<GeneralViewModel>();
+                Valor = dbItem.Valor,
+                Estregistro = dbItem.Estregistro,
+            }).ToList<ProductoViewModel>();
             return jresult.SetOk(lista, "Datos consultados correctamente");
         }
 

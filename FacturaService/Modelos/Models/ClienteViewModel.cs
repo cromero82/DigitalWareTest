@@ -1,3 +1,5 @@
+using System;
+
 namespace Modelos.Models
 {
     public class ClienteViewModel
@@ -7,7 +9,9 @@ namespace Modelos.Models
 
     public string Nombres { get; set; }
 
-    public string Telefono { get; set; }
+     public DateTime FechaNacimiento { get; set; }
+
+        public string Telefono { get; set; }
 
     public string Direccion { get; set; }
 

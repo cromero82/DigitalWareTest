@@ -1,14 +1,14 @@
-import { CoreUIPage } from './app.po';
+import { PdFreeAngularcliPage } from './app.po';
 
-describe('core-ui App', function() {
-  let page: CoreUIPage;
+describe('pd-free-angularcli App', () => {
+  let page: PdFreeAngularcliPage;
 
   beforeEach(() => {
-    page = new CoreUIPage();
+    page = new PdFreeAngularcliPage();
   });
 
-  it('should display footer containing creativeLabs', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toContain('creativeLabs');
+    expect(page.getParagraphText()).toEqual('Welcome to app!!');
   });
 });

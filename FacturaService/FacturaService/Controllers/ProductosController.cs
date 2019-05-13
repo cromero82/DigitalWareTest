@@ -20,7 +20,7 @@ namespace FacturaService.Controllers
             if (jresult.Success)
                 return Ok(jresult);
             else
-                return Json(jresult);
+                return Ok(jresult);
         }
 
         // GET: api/Producto/5
@@ -30,7 +30,7 @@ namespace FacturaService.Controllers
             if (jresult.Success)
                 return Ok(jresult);
             else
-                return Json(jresult);
+                return Ok(jresult);
         }
 
         // PUT: api/Producto
@@ -40,7 +40,7 @@ namespace FacturaService.Controllers
             BL.ValidacionUnique(model);
             if (BL.jresult.hasError())
             {
-                return Json(BL.jresult);
+                return Ok(BL.jresult);
             }
                 // Normal fluent
                 var jresult = BL.UpdProducto(model);
@@ -49,7 +49,7 @@ namespace FacturaService.Controllers
                 else
                 {
                     // Internal errors
-                    return Json(jresult);
+                    return Ok(jresult);
                 }
             }
         
@@ -60,7 +60,7 @@ namespace FacturaService.Controllers
             BL.ValidacionUnique(model);
             if (BL.jresult.hasError())
             {
-                return Json(BL.jresult);
+                return Ok(BL.jresult);
             }
 
             // Normal fluent
@@ -70,7 +70,7 @@ namespace FacturaService.Controllers
             else
             {
                 // Internal errors
-                return Json(jresult);
+                return Ok(jresult);
             }
         }
 
@@ -81,7 +81,7 @@ namespace FacturaService.Controllers
             if (jresult.Success)
                 return Ok(jresult);
             else
-                return Json(jresult);
+                return Ok(jresult);
         }
 
     }

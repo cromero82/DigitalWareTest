@@ -16,12 +16,12 @@ namespace FacturaBL
     {
         public int Id { get; set; }
         public int FacturaId { get; set; }
-        public int ProductoId { get; set; }
+        public int InventarioId { get; set; }
         public int Cant { get; set; }
         public int Subtotal { get; set; }
         public int Estregistro { get; set; }
     
         public virtual FACT_FACTURA FACT_FACTURA { get; set; }
-        public virtual FACT_PRODUCTO FACT_PRODUCTO { get; set; }
+        public virtual FACT_INVENTARIO FACT_INVENTARIO { get; set; }
     }
 }

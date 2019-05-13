@@ -1,11 +1,11 @@
-import { browser, element, by } from 'protractor';
+import { browser, by, element } from 'protractor';
 
-export class CoreUIPage {
+export class PdFreeAngularcliPage {
   navigateTo() {
     return browser.get('/');
   }
 
   getParagraphText() {
-    return element(by.className('app-footer')).getText();
+    return element(by.css('app-root h1')).getText();
   }
 }

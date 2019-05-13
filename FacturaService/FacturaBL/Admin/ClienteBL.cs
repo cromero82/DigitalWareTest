@@ -22,6 +22,7 @@ namespace FacturaBL.Admin
 	  			Id = dbItem.Id,
 	  			Nombres = dbItem.Nombres,
 	  			Documento = dbItem.Documento,
+                FechaNacimiento = dbItem.FechaNacimiento,
 	  			Telefono = dbItem.Telefono,
 	  			Direccion = dbItem.Direccion,
 	  			Estregistro = dbItem.Estregistro,
@@ -48,7 +49,8 @@ namespace FacturaBL.Admin
 	  			Id = model.Id,
 	  			Documento = model.Documento.ToUpper(),
 	  			Nombres = model.Nombres.ToUpper(),
-	  			Telefono = model.Telefono.ToUpper(),
+                FechaNacimiento = model.FechaNacimiento,
+                Telefono = model.Telefono,
 	  			Direccion = model.Direccion.ToUpper(),
 	  			Estregistro = 1,
 	  		};
@@ -80,6 +82,7 @@ namespace FacturaBL.Admin
 	  		dbItem.Id = model.Id;
 	  		dbItem.Documento = model.Documento.ToUpper();
 	  		dbItem.Nombres = model.Nombres.ToUpper();
+            dbItem.FechaNacimiento = model.FechaNacimiento;
 	  		dbItem.Telefono = model.Telefono.ToUpper();
 	  		dbItem.Direccion = model.Direccion.ToUpper();
 	  		dbItem.Estregistro = model.Estregistro;
@@ -124,12 +127,16 @@ namespace FacturaBL.Admin
 
 	  public JResult GetListActivos()
 	  {
-	  	var lista = db.FACT_CLIENTE.Where(w => w.Estregistro == 1).Select(dbItem => new GeneralViewModel
-	  	{
-	  		Id = dbItem.Id,
-	  		Estregistro = dbItem.Estregistro,
-	  		Nombre = dbItem.Nombres,
-	  	}).ToList<GeneralViewModel>();
+	  	var lista = db.FACT_CLIENTE.Where(w => w.Estregistro == 1).Select(dbItem => new ClienteViewModel
+          {
+              Id = dbItem.Id,
+              Nombres = dbItem.Nombres,
+              Documento = dbItem.Documento,
+              FechaNacimiento = dbItem.FechaNacimiento,
+              Telefono = dbItem.Telefono,
+              Direccion = dbItem.Direccion,
+              Estregistro = dbItem.Estregistro,
+          }).ToList<ClienteViewModel>();
 	  	return jresult.SetOk(lista, "Datos consultados correctamente");
 	  }	 
 
