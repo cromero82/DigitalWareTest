@@ -1,6 +1,7 @@
 import { ProductosService } from './productos.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Productos } from './model-productos';
 // declare interface ProductoData {
 //     headerRow: string[];
 //     dataRows: string[][];
@@ -14,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class ProductosComponent implements OnInit{
     headerRow: [ 'Id', 'Codigo', 'Nombre', 'Valor', 'Estregistro'];
-    dataRows: [];
+    dataRows: Productos[];
 
     constructor (private servicio: ProductosService, private activatedRoute: ActivatedRoute){}
 
@@ -22,11 +23,14 @@ export class ProductosComponent implements OnInit{
 
       this.activatedRoute.paramMap.subscribe(params => {
         this.servicio.list().subscribe( (items:any) => {
-          this.dataRows = items.Data;
+          this.dataRows = items.Data as Productos[];
         }, error =>{
           alert('Error consultando datos');
         }
         );
       });
+    }
+    editar(item:Productos){
+
     }
 }
