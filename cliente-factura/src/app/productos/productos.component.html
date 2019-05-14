@@ -10,7 +10,9 @@
                     <table class="table table-striped" *ngIf="dataRows?.length>0">
                         <thead>
                             <tr>
-                              <th>nombre</th>
+                                <th>Código</th>
+                                <th>Nombre</th>
+                                <th>Valor</th>
                               <!-- <th>descripción</th> -->
 
                               <th>Editar</th>
@@ -20,7 +22,9 @@
                           <tbody>
                             <tr *ngFor="let item of dataRows">
                                 <!-- <td>{{item.id}}</td> -->
-                              <td>{{item.Nombre}}</td>
+                                <td>{{item.Codigo}}</td>
+                                <td>{{item.Nombre}}</td>
+                                <td>{{item.Valor}}</td>
                               <!-- <td>{{item.descripcion}}</td> -->
                               <!-- <td>
                                 <button type="button" name="button" [routerLink]="['/clientes/form',eventoModel.id]" class="btn btn-primary">Editar</button>

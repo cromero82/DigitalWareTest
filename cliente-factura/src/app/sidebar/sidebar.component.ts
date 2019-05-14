@@ -10,12 +10,15 @@ export interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-    { path: 'productos', title: 'Productos',  icon:'ti-text', class: '' },
-    { path: 'dashboard', title: 'Dashboard',  icon: 'ti-panel', class: '' },
+    { path: 'productos', title: 'Productos',  icon:'ti-gift', class: '' },
+    { path: 'clientes', title: 'Clientes',  icon:'ti-user', class: '' },
+    { path: 'inventarios', title: 'Inventarios',  icon:'ti-harddrives', class: '' },
+    { path: 'facturas', title: 'Facturas',  icon:'ti-notepad', class: '' },
+    { path: 'facturasDetalles', title: 'Detalles de factura',  icon: 'ti-receipt', class: '' },
     { path: 'user', title: 'User Profile',  icon:'ti-user', class: '' },
-    { path: 'table', title: 'Table List',  icon:'ti-view-list-alt', class: '' },
+    // { path: 'table', title: 'Table List',  icon:'ti-view-list-alt', class: '' },
     // { path: 'typography', title: 'Typography',  icon:'ti-text', class: '' },
-    { path: 'icons', title: 'Icons',  icon:'ti-pencil-alt2', class: '' },
+    // { path: 'icons', title: 'Icons',  icon:'ti-pencil-alt2', class: '' },
     // { path: 'maps', title: 'Maps',  icon:'ti-map', class: '' },
     { path: 'notifications', title: 'Notifications',  icon:'ti-bell', class: '' },
     // { path: 'upgrade', title: 'Upgrade to PRO',  icon:'ti-export', class: 'active-pro' },
