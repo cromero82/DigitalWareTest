@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ProductosComponent } from './productos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CrearProductoComponent } from './crear-producto/crear-producto.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,8 @@ import { CrearProductoComponent } from './crear-producto/crear-producto.componen
     CommonModule,
     CrearProductoModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     ProductosComponent,
